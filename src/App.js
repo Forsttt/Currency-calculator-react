@@ -1,47 +1,34 @@
 
+import { useState } from 'react';
 import './App.css';
 import Form from './Form';
-import Result from './Result';
-
-
 
 function App() {
 
-  const CalculateResult = (amount, currency) => {
-    const rateEUR = 4.5817;
-    const rateCHF = 4.3392;
-    const rateSEK = 0.4382;
+  const [result,setResult] = useState("")
 
-    switch (currency) {
-      case "EUR":
-        return amount / rateEUR;
-
-      case "CHF":
-        return amount / rateCHF;
-
-      case "SEK":
-        return amount / rateSEK;
-
-        default:
-    };
+  const calculateResult = (amount, currency) => {
+    setResult(
+      {
+        resultValue: currency / amount,
+      }
+    ) 
   };
 
-
   return (
-  <>
-  <div className="container">
-    <h1 className="header">Kalkulator walutowy</h1>
-    <Form
-    title="Podaj Kwotę:"
-    subTitle="Wybierz walutę:"
-    calculateResult={CalculateResult}
-    />
-    <Result
-    />
-  </div>
-  </>
+    <>
+      <div className="container">
+        <h1 className="header">Kalkulator walutowy</h1>
+        <Form
+          title="Podaj ilość PLN:"
+          subTitle="Wybierz walutę:"
+          calculateResult={calculateResult}
+          result={result}
+        />
+      </div>
+    </>
   );
-  
-}
+
+};
 
 export default App;
