@@ -1,0 +1,14 @@
+.resultText {
+  display: flex;
+  font-size: 25px;
+  background-color: wheat;
+  max-width: max-content;
+  border-radius: 5px;
+  padding: 10px;
+  justify-self: center; 
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+}
