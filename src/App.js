@@ -5,14 +5,14 @@ import Form from './Form';
 
 function App() {
 
-  const [result,setResult] = useState("")
+  const [result, setResult] = useState("")
 
   const calculateResult = (amount, currency) => {
     setResult(
       {
         resultValue: currency / amount,
       }
-    ) 
+    )
   };
 
   return (

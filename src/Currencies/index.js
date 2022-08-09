@@ -1,5 +1,5 @@
 
- export const Currencies = [
+export const Currencies = [
   {
     name: "Euro",
     shortcut: "EUR",
