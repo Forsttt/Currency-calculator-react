@@ -37,13 +37,14 @@ const Form = (props) => {
             value={currency}
             onChange={(event) => { setCurrency(event.target.value) }}
             name="chooseCurrency">
-
             {Currencies.map(currency => (
-              <option key={currency.shortcut} value={currency.rate}>{currency.name}</option>
-            ),
-            )}
-
-
+              <option
+                key={currency.shortcut}
+                value={currency.rate}>
+                {currency.name}
+              </option>
+            ))
+            };
           </select>
         </div>
       </fieldset>
