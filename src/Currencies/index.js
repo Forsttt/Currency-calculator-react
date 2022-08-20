@@ -15,5 +15,10 @@ export const Currencies = [
     shortcut: "CHF",
     rate: 4.87
   },
+  {
+    name: "Jen Japoński",
+    shortcut: "JPY",
+    rate: 0.035
+  },
 ];
 
