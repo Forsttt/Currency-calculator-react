@@ -6,6 +6,11 @@
  
  https://forsttt.github.io/Currency-calculator-react/
  
+ ## Preview
+ 
+ ![preview](images/preview.jpg)
+
+ 
 ## Available Scripts
 
 In the project directory, you can run:
