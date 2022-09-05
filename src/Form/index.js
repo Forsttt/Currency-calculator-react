@@ -1,8 +1,8 @@
 import "./style.css";
 import "./result.css";
 import { useState } from 'react';
-import { Currencies } from "../Currencies";
-const Form = (props) => {
+import { Currencies } from "../currencies";
+const Form = ({ title, subTitle, result, calculateResult }) => {
   const [amount, setAmount] = useState("")
   const [currency, setCurrency] = useState(Currencies[0].rate)
 
@@ -12,14 +12,14 @@ const Form = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    props.calculateResult(currency, amount);
+    calculateResult(currency, amount);
   };
 
   return (
     <form className="form" onSubmit={onFormSubmit}>
       <fieldset className="form__fieldset">
         <div className="form__inputBox">
-          <span className="form__Text">{props.title}</span>
+          <span className="form__Text">{title}</span>
           <input className="form__field js-amount"
             value={amount}
             onChange={(event) => { setAmount(event.target.value) }}
@@ -31,7 +31,7 @@ const Form = (props) => {
             required />
         </div>
         <div>
-          <span className="form__Text">{props.subTitle}</span>
+          <span className="form__Text">{subTitle}</span>
           <select
             className="form__currency"
             value={currency}
@@ -53,7 +53,7 @@ const Form = (props) => {
       </p>
       <div className="result">
         <p className="resultText">
-          Wynik wynosi: {resultRounded(props.result !== "" ? props.result.resultValue : "")}
+          Wynik wynosi: {resultRounded(result !== "" ? result.resultValue : "")}
         </p>
       </div>
     </form>
