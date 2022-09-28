@@ -2,13 +2,30 @@ import "./style.css";
 import "./result.css";
 import { useState } from 'react';
 import { Currencies } from "../currencies";
-const Form = ({ title, subTitle, result, calculateResult }) => {
+const Form = ({ title, subTitle, }) => {
   const [amount, setAmount] = useState("")
-  const [currency, setCurrency] = useState(Currencies[0].rate)
+  const [currency, setCurrency] = useState(Currencies[0].name)
+  const [result, setResult] = useState("")
 
   const resultRounded = (props) => {
     return Math.round(props * 100) / 100
   }
+
+  const showAmount = (event) => {
+    setCurrency(event.target.value)
+  }
+
+  const calculateResult = () => {
+    const rate = Currencies.find(({ name }) => name === currency).rate
+
+    setResult(
+      {
+        amount: amount,
+        resultValue: amount / rate,
+        currency: Currencies.find(({ name }) => name === currency).shortcut
+      }
+    )
+  };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -35,12 +52,12 @@ const Form = ({ title, subTitle, result, calculateResult }) => {
           <select
             className="form__currency"
             value={currency}
-            onChange={(event) => { setCurrency(event.target.value) }}
+            onChange={showAmount}
             name="chooseCurrency">
             {Currencies.map(currency => (
               <option
-                key={currency.shortcut}
-                value={currency.rate}>
+                key={currency.name}
+                value={currency.name}>
                 {currency.name}
               </option>
             ))
@@ -53,7 +70,7 @@ const Form = ({ title, subTitle, result, calculateResult }) => {
       </p>
       <div className="result">
         <p className="resultText">
-          Wynik wynosi: {resultRounded(result !== "" ? result.resultValue : "")}
+          {result.amount} PLN = {resultRounded(result !== "" ? result.resultValue : "")} {result.currency}
         </p>
       </div>
     </form>
