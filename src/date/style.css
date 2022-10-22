@@ -1,0 +1,6 @@
+.form__Date {
+  display: flex;
+  justify-content: right;
+  color: wheat;
+  margin-right: 5px;
+}
